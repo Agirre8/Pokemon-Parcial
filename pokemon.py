@@ -1,10 +1,4 @@
-from enum import Enum
-
-class WeaponType(Enum):
-    PUNCH = "Puñetazo"
-    KICK = "Patada"
-    ELBOW = "Codazo"
-    HEADBUTT = "Cabezazo"
+from weapon_type import *
 
 class Pokemon():
 

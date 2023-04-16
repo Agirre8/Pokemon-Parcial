@@ -1,35 +1,11 @@
+from enum import Enum
 
-"""Python class to implement an enumeration for the attribute Weapon Type.
+class WeaponType(Enum):
 
-    This Python class implements an enumeration for the attribute Weapon Type.
-
-    Syntax
-    ------
-      obj = WeaponType.Enum
-
-    Parameters
-    ----------
-
-    Returns
-    -------
-      obj Python object output parameter that represents an instance
-          of the class WeaponType.
-
-    Attributes
-    ----------
-
-    Example
-    -------
-      >>> from weapon_type import WeaponType
-      >>> obj_WeaponType = WeaponType.Boxer
-    """
-
-class WeaponType():
-
-    PUNCH = "Puñetazo"
-    KICK = "Patada"
-    ELBOW = "Codazo"
-    HEADBUTT = "Cabezazo"
+    PUNCH = 2
+    KICK = 4 
+    ELBOW = 6
+    HEADBUTT = 10
 
 
 def main():
@@ -83,6 +59,7 @@ def main():
         print("Test FAIL. Check the method __init__().")
 
 
-
+if __name__ == "__main__":
+    main()
 
 
