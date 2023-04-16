@@ -70,6 +70,7 @@ from weapon_type import WeaponType
 
 class Pokemon():
 
+    id_list = []
 
     def __init__(self, id, name, weapon_type, health, attack, defense):
 
@@ -89,14 +90,97 @@ class Pokemon():
             self.weapon_type = weapon_type
 
         if health < 1 or health > 100:
-            raise ValueError("Health must be an integer between 1 and 100.")
+            raise ValueError("Health tiene que ser un número entre 1 y 100.")
         else:
             self.health = health
         
-        if attack_index < 1 or attack_index > 10:
+        if attack < 1 or attack > 10:
             raise ValueError("La fuerza del ataque tiene que estar entre 1 y 10.")
         else:
             self.attack = attack
+        if defense < 1 or defense > 10:
+            raise ValueError("La deensa tiene que estar entre 1 y 10.")
+        else:
+            self.defense = defense
+
+
+        def __del__(self):
+        Pokemon.id_list.remove(self.id)
+
+        #METODO PARA IMPRIMIR ESTADISTICAS POR PANTALLA
+        def __str__(self):
+        return f"Pokemon ID {self.id} with name {self.name} has weapon {self.weapon_type} and health {self.health}."
+
+
+        #GETTERS
+        def get_id(self):
+        return self.id
+
+        def get_name(self):
+        return self.name
+
+        def get_health(self):
+        return self.health
+
+        def get_attack(self):
+        return self.attack
+
+        def get_weapon_type(self):
+        return self.weapon_type
+
+        def get_defense(self):
+        return self.defense
+
+        def get_name(self):
+        return self.name
+
+        #SETTERS
+        def set_name(self, name):
+        if len(name) == 0:
+            raise ValueError("El nombre tiene que ser un string no nulo")
+        else:
+            self.name = name
+
+        def set_health(self, health):
+        if health < 1 or health > 100:
+            raise ValueError("Health tiene que ser un número entre 1 y 100.")
+        self.health = health
+
+        
+        def set_attack(self, attack):
+        if attack <= 0:
+            raise ValueError("El ataque tiene que ser un número positivo")
+        self.attack = attack
+
+        
+        def set_defense(self, defense):
+        if defense <= 0:
+            raise ValueError("La defensa tiene que ser un valor positivo")
+        self.defense = defense
+
+        #METODO PARA COMPROBAR SI SIGUE VIVO
+        def is_alive(self):
+        return self.health > 0
+
+        
+
+        # METODO DE ATAQUE POKEMON
+        def fight_attack(self, pokemon_to_attack):
+            
+            points_of_damage = self.attack
+            return pokemon_to_attack.fight_defense(points_of_damage)
+
+        #METODO DE defense POKEMON
+        def fight_defense(self, points_of_damage):
+           
+            if self.defense > points_of_damage:
+                return False
+            else:
+                self.health -= points_of_damage - self.defense
+                return True
+
+
+
 
 
 
