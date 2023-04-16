@@ -1,71 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-
-"""
-This Python module contains not only the class Pokemon, but also the test of
-this Python class.
-
-@contents :  This module contains not only a single Python class, but also the
-             test cases to probe its functionality.
-@project :  N/A
-@program :  N/A
-@file :  pokemon.py
-@author :  Antonio Artes Garcia (antonio.artesgarcia@ceu.es)
-           Francisco Hernando Gallego (francisco.hernandogallego@ceu.es)
-           Ruben Juarez Cadiz (ruben.juarezcadiz@ceu.es)
-
-@version :  0.0.1, 08 November 2021
-@information :  The Zen of Python
-                  https://www.python.org/dev/peps/pep-0020/
-                Style Guide for Python Code
-                  https://www.python.org/dev/peps/pep-0008/
-                Example NumPy Style Python Docstrings
-                  http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html
-                doctest  Testing through documentation
-                  https://pymotw.com/2/doctest/
-
-@copyright :  Copyright 2021 GNU AFFERO GENERAL PUBLIC.
-              All rights are reserved. Reproduction in whole or in part is
-              prohibited without the written consent of the copyright owner.
-"""
-
-
-# Source packages.
-
-"""Python class to implement a basic version of a Pokemon of the game.
-
-    This Python class implements the basic version of a Pokemon of the game.
-
-    Syntax
-    ------
-      obj = Pokemon(id, pokemon_name, weapon_type, health_points,
-                   attack_rating, defense_rating)
-
-    Parameters
-    ----------
-      [in] id ID of the Pokemon.
-      [in] pokemon_name Name of the Pokemon.
-      [in] weapon_type Type of weapon that carries out the Pokemon.
-      [in] health_points Points of health that the Pokemon has.
-      [in] attack_rating Attack rating of the Pokemon.
-      [in] defense_rating Defense rating of the Pokemon.
-
-    Returns
-    -------
-      obj Python object output parameter that represents an instance
-          of the class Pokemon.
-
-    Attributes
-    ----------
-
-    Example
-    -------
-      """""">>> from pokemon import Pokemon
-      "">>> from weapon_type import WeaponType
-      "">>> obj_Pokemon = Pokemon(1, "Bulbasaur", WeaponType.PUNCH, 100, 7, 10)
-    """
-
+from weapon_type import WeaponType
 
 class Pokemon():
 
@@ -75,14 +8,12 @@ class Pokemon():
 
         self.id = id
 
-
         if len(name) == 0:
             raise ValueError("El nombre tiene que ser un string no nulo")
         else:
             self.name = name
           
         #La función isinstance() comprueba si el objeto (primer argumento) es una instancia o subclase de la clase classinfo (segundo argumento).
-
 
         if health < 1 or health > 100:
             raise ValueError("Health tiene que ser un número entre 1 y 100.")
@@ -97,15 +28,6 @@ class Pokemon():
             raise ValueError("La defensa tiene que estar entre 1 y 10.")
         else:
             self.defense = defense
-
-
-    def __del__(self):
-        Pokemon.id_list.remove(self.id)
-
-    #METODO PARA IMPRIMIR ESTADISTICAS POR PANTALLA
-    def __str__(self):
-        return f"Pokemon ID {self.id} with name {self.name} has as weapon {self.weapon_type} and health {self.health}."
-
 
     #GETTERS
     def get_id(self):
@@ -143,8 +65,7 @@ class Pokemon():
         if attack <= 0:
             raise ValueError("El ataque tiene que ser un número positivo")
         self.attack = attack
-
-    
+  
     def set_defense(self, defense):
         if defense <= 0:
             raise ValueError("La defensa tiene que ser un valor positivo")
@@ -153,8 +74,6 @@ class Pokemon():
     #METODO PARA COMPROBAR SI SIGUE VIVO
     def is_alive(self):
         return self.health > 0
-
-    
 
     # METODO DE ATAQUE POKEMON
     def fight_attack(self, pokemon_to_attack):
@@ -170,19 +89,18 @@ class Pokemon():
             self.health -= points_of_damage - self.defense
             return True
 
+    def __del__(self):
+        Pokemon.id_list.remove(self.id)
 
-
-
-
-
-
+    def __str__(self):
+        return f"Pokemon ID {self.id} with name {self.name} has as weapon {self.weapon_type} and health {self.health}."
 
 def main():
 
     print("=================================================================.")
     print("Test Case 1: Create a Pokemon.")
     print("=================================================================.")
-    pokemon_1 = Pokemon(1, "Ivysaur", "HEADBUTT", 100, 8, 9)
+    pokemon_1 = Pokemon(1, "Ivysaur", WeaponType.HEADBUTT, 100, 8, 9)
 
     if pokemon_1.get_pokemon_name() == "Ivysaur":
         print("Test PASS. The parameter pokemon_name has been correctly set.")
@@ -213,8 +131,7 @@ def main():
     print("=================================================================.")
     print("Test Case 2: Human-readable format of the object.")
     print("=================================================================.")
-    pokemon_2 = Pokemon(2, "Charmander", "HEADBUTT", 100, 7, 10)
-
+    pokemon_2 = Pokemon(2, "Charmander", WeaponType.HEADBUTT, 100, 7, 10)
     if str(pokemon_2) == "Pokemon ID 2 with name Charmander has as weapon HEADBUTT and health 100":
         print("Test PASS. The human-readable format of the object has been implemented correctly.")
     else:
@@ -268,8 +185,6 @@ def main():
             print("Test PASS. The method fight_attack() has been implemented correctly.")
         else:
             print("Test FAIL. Check the method fight_attack().")
-
-
 
 # Checking whether this module is executed just itself alone.
 if __name__ == "__main__":
