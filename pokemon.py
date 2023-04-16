@@ -22,7 +22,7 @@ this Python class.
                   https://www.python.org/dev/peps/pep-0008/
                 Example NumPy Style Python Docstrings
                   http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html
-                doctest – Testing through documentation
+                doctest  Testing through documentation
                   https://pymotw.com/2/doctest/
 
 @copyright :  Copyright 2021 GNU AFFERO GENERAL PUBLIC.
@@ -33,7 +33,7 @@ this Python class.
 
 # Source packages.
 
-    """Python class to implement a basic version of a Pokemon of the game.
+"""Python class to implement a basic version of a Pokemon of the game.
 
     This Python class implements the basic version of a Pokemon of the game.
 
@@ -61,12 +61,11 @@ this Python class.
 
     Example
     -------
-      >>> from pokemon import Pokemon
-      >>> from weapon_type import WeaponType
-      >>> obj_Pokemon = Pokemon(1, "Bulbasaur", WeaponType.PUNCH, 100, 7, 10)
+      """""">>> from pokemon import Pokemon
+      "">>> from weapon_type import WeaponType
+      "">>> obj_Pokemon = Pokemon(1, "Bulbasaur", WeaponType.PUNCH, 100, 7, 10)
     """
 
-from weapon_type import WeaponType
 
 class Pokemon():
 
@@ -74,7 +73,7 @@ class Pokemon():
 
     def __init__(self, id, name, weapon_type, health, attack, defense):
 
-        self.pokemon_id = pokemon_id
+        self.id = id
 
 
         if len(name) == 0:
@@ -84,10 +83,6 @@ class Pokemon():
           
         #La función isinstance() comprueba si el objeto (primer argumento) es una instancia o subclase de la clase classinfo (segundo argumento).
 
-        if not isinstance(weapon_type, WeaponType):  
-            raise ValueError("Tipo de arma no válido")
-        else:
-            self.weapon_type = weapon_type
 
         if health < 1 or health > 100:
             raise ValueError("Health tiene que ser un número entre 1 y 100.")
@@ -99,85 +94,81 @@ class Pokemon():
         else:
             self.attack = attack
         if defense < 1 or defense > 10:
-            raise ValueError("La deensa tiene que estar entre 1 y 10.")
+            raise ValueError("La defensa tiene que estar entre 1 y 10.")
         else:
             self.defense = defense
 
 
-        def __del__(self):
+    def __del__(self):
         Pokemon.id_list.remove(self.id)
 
-        #METODO PARA IMPRIMIR ESTADISTICAS POR PANTALLA
-        def __str__(self):
-        return f"Pokemon ID {self.id} with name {self.name} has weapon {self.weapon_type} and health {self.health}."
+    #METODO PARA IMPRIMIR ESTADISTICAS POR PANTALLA
+    def __str__(self):
+        return f"Pokemon ID {self.id} with name {self.name} has as weapon {self.weapon_type} and health {self.health}."
 
 
-        #GETTERS
-        def get_id(self):
+    #GETTERS
+    def get_id(self):
         return self.id
 
-        def get_name(self):
+    def get_pokemon_name(self):
         return self.name
 
-        def get_health(self):
+    def get_health_points(self):
         return self.health
 
-        def get_attack(self):
+    def get_attack_rating(self):
         return self.attack
 
-        def get_weapon_type(self):
+    def get_weapon_type(self):
         return self.weapon_type
 
-        def get_defense(self):
+    def get_defense_rating(self):
         return self.defense
 
-        def get_name(self):
-        return self.name
-
-        #SETTERS
-        def set_name(self, name):
+    #SETTERS
+    def set_name(self, name):
         if len(name) == 0:
             raise ValueError("El nombre tiene que ser un string no nulo")
         else:
             self.name = name
 
-        def set_health(self, health):
+    def set_health(self, health):
         if health < 1 or health > 100:
             raise ValueError("Health tiene que ser un número entre 1 y 100.")
         self.health = health
 
-        
-        def set_attack(self, attack):
+    
+    def set_attack(self, attack):
         if attack <= 0:
             raise ValueError("El ataque tiene que ser un número positivo")
         self.attack = attack
 
-        
-        def set_defense(self, defense):
+    
+    def set_defense(self, defense):
         if defense <= 0:
             raise ValueError("La defensa tiene que ser un valor positivo")
         self.defense = defense
 
-        #METODO PARA COMPROBAR SI SIGUE VIVO
-        def is_alive(self):
+    #METODO PARA COMPROBAR SI SIGUE VIVO
+    def is_alive(self):
         return self.health > 0
 
+    
+
+    # METODO DE ATAQUE POKEMON
+    def fight_attack(self, pokemon_to_attack):
+        points_of_damage = self.attack
+        return pokemon_to_attack.fight_defense(points_of_damage)
+
+    #METODO DE DEFENSE POKEMON
+    def fight_defense(self, points_of_damage):
         
-
-        # METODO DE ATAQUE POKEMON
-        def fight_attack(self, pokemon_to_attack):
-            
-            points_of_damage = self.attack
-            return pokemon_to_attack.fight_defense(points_of_damage)
-
-        #METODO DE defense POKEMON
-        def fight_defense(self, points_of_damage):
-           
-            if self.defense > points_of_damage:
-                return False
-            else:
-                self.health -= points_of_damage - self.defense
-                return True
+        if self.defense > points_of_damage:
+            return False
+        else:
+            self.health -= points_of_damage - self.defense
+            return True
 
 
 
@@ -187,32 +178,11 @@ class Pokemon():
 
 
 def main():
-    """Function main of the module.
-
-    The function main of this module is used to test the Class that is described
-    in this module.
-
-    Syntax
-    ------
-      [ ] = main()
-
-    Parameters
-    ----------
-      Null .
-
-    Returns
-    -------
-      Null .
-
-    Example
-    -------
-      >>> main()
-    """
 
     print("=================================================================.")
     print("Test Case 1: Create a Pokemon.")
     print("=================================================================.")
-    pokemon_1 = Pokemon(1, "Ivysaur", WeaponType.HEADBUTT, 100, 8, 9)
+    pokemon_1 = Pokemon(1, "Ivysaur", "HEADBUTT", 100, 8, 9)
 
     if pokemon_1.get_pokemon_name() == "Ivysaur":
         print("Test PASS. The parameter pokemon_name has been correctly set.")
@@ -243,7 +213,7 @@ def main():
     print("=================================================================.")
     print("Test Case 2: Human-readable format of the object.")
     print("=================================================================.")
-    pokemon_2 = Pokemon(2, "Charmander", WeaponType.HEADBUTT, 100, 7, 10)
+    pokemon_2 = Pokemon(2, "Charmander", "HEADBUTT", 100, 7, 10)
 
     if str(pokemon_2) == "Pokemon ID 2 with name Charmander has as weapon HEADBUTT and health 100":
         print("Test PASS. The human-readable format of the object has been implemented correctly.")
