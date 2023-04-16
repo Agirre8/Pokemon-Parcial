@@ -93,6 +93,10 @@ class Pokemon():
         else:
             self.health = health
         
+        if attack_index < 1 or attack_index > 10:
+            raise ValueError("La fuerza del ataque tiene que estar entre 1 y 10.")
+        else:
+            self.attack = attack
 
 
 
