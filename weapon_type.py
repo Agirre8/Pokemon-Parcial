@@ -1,7 +1,6 @@
 from enum import Enum
 
 class WeaponType(Enum):
-
     PUNCH = 2
     KICK = 4 
     ELBOW = 6
@@ -9,7 +8,6 @@ class WeaponType(Enum):
 
 
 def main():
-
     print("=================================================================.")
     print("Test Case 1: Check Class WeaponType - Name.")
     print("=================================================================.")
