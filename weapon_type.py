@@ -1,5 +1,5 @@
 
-    """Python class to implement an enumeration for the attribute Weapon Type.
+"""Python class to implement an enumeration for the attribute Weapon Type.
 
     This Python class implements an enumeration for the attribute Weapon Type.
 
