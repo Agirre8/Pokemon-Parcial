@@ -5,7 +5,9 @@ import random
 class PokemonElectricity(Pokemon):
     id_list = []
     def __init__(self, id, name, weapon_type, health, attack, defense):
+
         super().__init__(id, name, weapon_type, health, attack, defense)
+        
         PokemonElectricity.id_list.append(self.id)
 
 #metodo fight_defense cambiado, creando una avriable aleatoria 0 o 1, si es 0 no le afecta el ataque, si es 1 actua normal el método

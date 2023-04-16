@@ -6,7 +6,7 @@ class PokemonWater(Pokemon):
     id_list = []
 
     def __init__(self, id, name, weapon_type, health, attack, defense):
-
+        
         self.id = id
         self.weapon_type = weapon_type
         
