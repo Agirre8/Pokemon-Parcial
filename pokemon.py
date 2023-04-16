@@ -93,7 +93,7 @@ class Pokemon():
         Pokemon.id_list.remove(self.id)
 
     def __str__(self):
-        return f"Pokemon ID {self.id} with name {self.name} has as weapon {self.weapon_type} and health {self.health}."
+        return f"Pokemon ID {self.id} with name {self.name} has as weapon {self.weapon_type} and health {self.health}"
 
 def main():
 

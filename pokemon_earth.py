@@ -26,7 +26,7 @@ class PokemonEarth(Pokemon):
             raise ValueError("La fuerza del ataque tiene que estar entre 1 y 10.")
         else:
             self.attack = attack
-        if defense < 1 or defense > 10:
+        if defense < 11 or defense > 20:
             raise ValueError("La defensa tiene que estar entre 1 y 10.")
         else:
             self.defense = defense
