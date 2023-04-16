@@ -4,7 +4,6 @@ from weapon_type import *
 class PokemonEarth(Pokemon):
    
     id_list = []
-
     def __init__(self, id, name, weapon_type, health, attack, defense):
 
         self.id = id
