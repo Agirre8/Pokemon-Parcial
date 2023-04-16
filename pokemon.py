@@ -33,9 +33,6 @@ this Python class.
 
 # Source packages.
 
-
-
-class Pokemon():
     """Python class to implement a basic version of a Pokemon of the game.
 
     This Python class implements the basic version of a Pokemon of the game.
@@ -69,8 +66,33 @@ class Pokemon():
       >>> obj_Pokemon = Pokemon(1, "Bulbasaur", WeaponType.PUNCH, 100, 7, 10)
     """
 
-def __init__(self, id, pokemon_name, weapon_type, health_points, attack_rating, defense_rating):
-    
+from weapon_type import WeaponType
+
+class Pokemon():
+
+
+    def __init__(self, id, name, weapon_type, health, attack, defense):
+
+        self.pokemon_id = pokemon_id
+
+
+        if len(name) == 0:
+            raise ValueError("El nombre tiene que ser un string no nulo")
+        else:
+            self.name = name
+          
+        #La función isinstance() comprueba si el objeto (primer argumento) es una instancia o subclase de la clase classinfo (segundo argumento).
+
+        if not isinstance(weapon_type, WeaponType):  
+            raise ValueError("Tipo de arma no válido")
+        else:
+            self.weapon_type = weapon_type
+
+        if health < 1 or health > 100:
+            raise ValueError("Health must be an integer between 1 and 100.")
+        else:
+            self.health = health
+        
 
 
 
