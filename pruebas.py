@@ -1,5 +1,5 @@
 from enum import Enum
-
+import random
 class WeaponType(Enum):
 
     PUNCH = "PUNCH"
@@ -43,7 +43,14 @@ class Pokemon():
         return f"Pokemon ID {self.id} con nombre {self.name}, con arma {self.weapon_type} y con salud {self.health}"
 
 def main():
-    print(WeaponType.HEADBUTT.value) 
+        numero_aleatorio = random.randint(0, 1)
+        points_of_damage = 10
+
+        if numero_aleatorio == 0:
+            points_of_damage = points_of_damage * 2 
+        else:
+            pass
+        print(points_of_damage)
 
 if __name__ == "__main__":
     main()

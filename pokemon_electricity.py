@@ -3,25 +3,21 @@ from weapon_type import *
 import random 
 
 class PokemonElectricity(Pokemon):
+    
     id_list = []
     def __init__(self, id, name, weapon_type, health, attack, defense):
 
         super().__init__(id, name, weapon_type, health, attack, defense)
-        
-        PokemonElectricity.id_list.append(self.id)
 
-#metodo fight_defense cambiado, creando una avriable aleatoria 0 o 1, si es 0 no le afecta el ataque, si es 1 actua normal el método
-    def fight_defense(self, points_of_damage):
+        Pokemon.id_list.append(self.id)
 
-            numero_aleatorio = random.randint(0, 1)
-
-            if numero_aleatorio == 0:
-                return False
-            elif self.defense > points_of_damage:
-                return False
-            else:
-                self.health -= points_of_damage - self.defense
-                return True
+#metodo fight_attack cambiado, creando una avriable aleatoria 0 o 1, si es 0 no le afecta el ataque, si es 1 actua normal el método
+    def fight_attack(self, pokemon_to_attack):
+        numero_aleatorio = random.randint(0, 1)
+        points_of_damage = self.attack
+        if numero_aleatorio == 0:
+            points_of_damage = points_of_damage * 2 
+        return pokemon_to_attack.fight_defense(points_of_damage)
 
 
 def main():
