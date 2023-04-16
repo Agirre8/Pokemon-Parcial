@@ -1,4 +1,10 @@
-from weapon_type import WeaponType
+from enum import Enum
+
+class WeaponType(Enum):
+    PUNCH = "Puñetazo"
+    KICK = "Patada"
+    ELBOW = "Codazo"
+    HEADBUTT = "Cabezazo"
 
 class Pokemon():
 
@@ -7,7 +13,8 @@ class Pokemon():
     def __init__(self, id, name, weapon_type, health, attack, defense):
 
         self.id = id
-
+        self.weapon_type = weapon_type
+        
         if len(name) == 0:
             raise ValueError("El nombre tiene que ser un string no nulo")
         else:
@@ -28,6 +35,8 @@ class Pokemon():
             raise ValueError("La defensa tiene que estar entre 1 y 10.")
         else:
             self.defense = defense
+
+        Pokemon.id_list.append(self.id)
 
     #GETTERS
     def get_id(self):
