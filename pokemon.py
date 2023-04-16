@@ -69,6 +69,9 @@ class Pokemon():
       >>> obj_Pokemon = Pokemon(1, "Bulbasaur", WeaponType.PUNCH, 100, 7, 10)
     """
 
+def __init__(self, id, pokemon_name, weapon_type, health_points, attack_rating, defense_rating):
+    
+
 
 
 
