@@ -1,50 +1,46 @@
 import os
+import sys
 from pokemon import Pokemon
 from pokemon_air import PokemonAir
 from pokemon_earth import PokemonEarth
 from pokemon_electricity import PokemonElectricity
 from pokemon_water import PokemonWater
 import random
-from csv import reader
+import csv
 
 
+def obtener_csv_como_lista_de_diccionarios(nombre_archivo):
 
-def get_data_from_user(name_file):
+  separador = ","
+  with open(nombre_archivo, encoding="utf-8") as archivo:
 
-  with open(name_file, 'r') as csv_file:
-      csv_reader = reader(csv_file)
-      # Passing the cav_reader object to list() to get a list of lists
-      list_of_rows = list(csv_reader)
-  return list_of_rows
+    list_of_pokemons = []
 
+    for linea in archivo:
+      linea = linea.rstrip("\n")  # Quitar salto de línea
+      columnas = linea.split(separador)
+      id = int(columnas[0])
+      name = columnas[1]
+      weapon_type = columnas[2]
+      health = int(columnas[3])
+      attack = int(columnas[4])
+      defense = int(columnas[5])
 
+      #creamos los objetos pokemon con los elementos del csv
+      pokemon = Pokemon(id, name, weapon_type, health, attack, defense)
+      print(str(pokemon))
+      list_of_pokemons.append(pokemon)
 
-
-"""Function to obtain data from each user.
-
-    This function obtains data from each user in order to set the configuration
-    of the Game.
-
-    Syntax
-    ------
-      [ ] = get_data_from_user(name_file)
-
-    Parameters
-    ----------
-      name_file str Name of the CSV file.
-
-    Returns
-    -------
-      list_pokemons List of Pokemons obtained from CSV .
-
-    Example
-    -------
-      >>> list_pokemons = get_data_from_user("file.csv")
-    """
+  return list_of_pokemons
 
 
 
 def get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
+
+  
+
+
+
     """Function to know the list of Pokemons that are associated to the Coach.
 
     This function is used in order to know the list of Pokemos that are
@@ -99,41 +95,47 @@ def coach_is_undefeated(list_of_pokemons):
 
 def main():
 
-    print("Welcome to the Game.")
-    print("Let's start to set the configuration of each game user. \n")
+  lista1 = get_data_from_user("coach_1_pokemons.csv")
+  lista2 = get_data_from_user("coach_2_pokemons.csv")
 
-    # Get configuration for Game User 1.
+  print(lista1)
+  print(lista2)
 
+  print("Welcome to the Game.")
+  print("Let's start to set the configuration of each game user. \n")
 
-    # Get configuration for Game User 2.
-
-
-    print("------------------------------------------------------------------")
-    print("The Game starts...")
-    print("------------------------------------------------------------------")
-
-    # Get a copy of the list of pokemons:
+  # Get configuration for Game User 1.
 
 
-    # Choose first pokemons
- 
-
-    # Main loop.
+  # Get configuration for Game User 2.
 
 
+  print("------------------------------------------------------------------")
+  print("The Game starts...")
+  print("------------------------------------------------------------------")
 
-    print("------------------------------------------------------------------")
-    print("The Game has end...")
-    print("------------------------------------------------------------------")
-
-
-    print("------------------------------------------------------------------")
-    print("Statistics")
-    print("------------------------------------------------------------------")
-    print("Game User 1:")
+  # Get a copy of the list of pokemons:
 
 
-    print("Game User 2:")
+  # Choose first pokemons
+
+
+  # Main loop.
+
+
+
+  print("------------------------------------------------------------------")
+  print("The Game has end...")
+  print("------------------------------------------------------------------")
+
+
+  print("------------------------------------------------------------------")
+  print("Statistics")
+  print("------------------------------------------------------------------")
+  print("Game User 1:")
+
+
+  print("Game User 2:")
 
 
 
