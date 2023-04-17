@@ -63,20 +63,33 @@ def choose_first_turn(pokemon1, pokemon2):
 
   return starter_pokemon
 
-def batalla(pokemon1, pokemon2, turno):
+def conbate(pokemon1, pokemon2, turno):
 
+  while int(pokemon1.get_health_points()) and int(pokemon2.get_health_points()) > 0 :
     if turno % 2 != 0:
       pokemon1.fight_attack(pokemon2)
       print(f"{pokemon1.get_pokemon_name()} usó {pokemon1.get_weapon_type()} sobre {pokemon2.get_pokemon_name()}")
       turno += 1
       print(pokemon1.get_health_points())
       print(pokemon2.get_health_points())
+    
+    elif turno >200:
+      break
     else:
       pokemon2.fight_attack(pokemon1)
       print(f"{pokemon2.get_pokemon_name()} usó {pokemon2.get_weapon_type()} sobre {pokemon1.get_pokemon_name()}")
       turno += 1
       print(pokemon1.get_health_points())
       print(pokemon2.get_health_points())
+
+  print(f"\nEl conbate ah durado {turno} turnos")
+  if pokemon1.get_health_points() > pokemon2.get_health_points():
+    pokemon_ganador = pokemon1
+  else:
+    pokemon_ganador = pokemon2
+  print(f"El pokemon ganador es {pokemon_ganador.get_pokemon_name()}")
+  return pokemon_ganador
+  
 
 
 def main():
@@ -116,7 +129,9 @@ def main():
 
   # Main loop.
 
-  batalla(starter_1, starter_2, 1)
+  conbate(starter_1, starter_2, 1)
+
+  
 
   print("------------------------------------------------------------------")
   print("The Game has end...")
