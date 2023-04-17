@@ -72,11 +72,11 @@ def main():
   print("Let's start to set the configuration of each game user. \n")
 
   # Get configuration for Game User 1.
-  lista1 = obtener_csv_como_lista_de_diccionarios("coach_1_pokemons.csv")
+  lista1 = obtener_csv_como_lista_de_diccionarios("CSV/coach_1_pokemons.csv")
   print("User1 esta preparado para la batalla")
   # Get configuration for Game User 2.
   print("------------------------------------------------------------------")
-  lista2 = obtener_csv_como_lista_de_diccionarios("coach_2_pokemons.csv")
+  lista2 = obtener_csv_como_lista_de_diccionarios("CSV/coach_2_pokemons.csv")
   print("User2 esta preparado para la batalla")
 
 
@@ -100,11 +100,7 @@ def main():
   print(f"{first_turn_pokemon.get_pokemon_name()} is attacking first\n")
 
 
-  # Choose first pokemons
-
-
   # Main loop.
-
 
 
   print("------------------------------------------------------------------")
