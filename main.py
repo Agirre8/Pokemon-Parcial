@@ -8,14 +8,12 @@ from pokemon_water import PokemonWater
 import random
 import csv
 
-list_of_pokemons = []
 
 def obtener_csv_como_lista_de_diccionarios(nombre_archivo):
-
+  list_of_pokemons = []
   separador = ","
-  with open(nombre_archivo, encoding="utf-8") as archivo:
 
-    
+  with open(nombre_archivo, encoding="utf-8") as archivo:
 
     for linea in archivo:
       linea = linea.rstrip("\n")  # Quitar salto de línea
@@ -56,13 +54,14 @@ def coach_is_undefeated(list_of_pokemons):
 def choose_first_pokemons(list_of_pokemons):
   
   starter_pick = random.choice(list_of_pokemons)
-  print(starter_pick)
+
   return starter_pick
 
 def choose_first_turn(pokemon1, pokemon2):
   lista = [pokemon1, pokemon2]
   starter_pokemon = random.choice(lista)
-  print(starter_pokemon)
+
+  return starter_pokemon
 
 
 
@@ -85,13 +84,20 @@ def main():
   print("The Game starts...")
   print("------------------------------------------------------------------")
 
-  # Get a copy of the list of pokemons:
+#Los entrenadores seleccionan su primer pokemon
+
   starter_1 = choose_first_pokemons(lista1)
 
   starter_2 = choose_first_pokemons(lista2)
   
-  print(f"User1 opens with {starter_1.get_pokemon_name()}")
-  print(f"User2 opens with {starter_2.get_pokemon_name()}")
+  print(f"\nUser1 opens with {starter_1.get_pokemon_name()}\n")
+  print(f"User2 opens with {starter_2.get_pokemon_name()}\n")
+
+#Se escoge aleatoriamente que entrenador va ha empezar a luchar
+
+
+  first_turn_pokemon = choose_first_turn(starter_1, starter_2)
+  print(f"{first_turn_pokemon.get_pokemon_name()} is attacking first\n")
 
 
   # Choose first pokemons

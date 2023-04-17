@@ -1,8 +1,9 @@
 from pokemon import Pokemon
 import random
-list_of_pokemons = []
+
 def obtener_csv_como_lista_de_diccionarios(nombre_archivo):
     separador = ","
+    list_of_pokemons = []
     with open(nombre_archivo, encoding="utf-8") as archivo:
 
 
@@ -21,7 +22,7 @@ def obtener_csv_como_lista_de_diccionarios(nombre_archivo):
             list_of_pokemons.append(pokemon)
         print(len(list_of_pokemons))
         pokemon1 = random.choice(list_of_pokemons)
-        print(str(pokemon1))
+  
     return list_of_pokemons
 
 def choose_first_pokemons(list_of_pokemons):
@@ -31,5 +32,12 @@ def choose_first_pokemons(list_of_pokemons):
   return starter_pick
     
 
-obtener_csv_como_lista_de_diccionarios("coach_1_pokemons.csv")
-choose_first_pokemons(list_of_pokemons)
+lista1 = obtener_csv_como_lista_de_diccionarios("coach_1_pokemons.csv")
+
+lista2 = obtener_csv_como_lista_de_diccionarios("coach_2_pokemons.csv")
+
+print(len(lista2))
+print(len(lista2))
+choose_first_pokemons(lista2)
+choose_first_pokemons(lista2)
+
