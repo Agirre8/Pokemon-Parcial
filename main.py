@@ -127,7 +127,9 @@ def main():
 
 
   # Main loop.
+
   while True:
+
     pokemon_ganador = combate(starter_1, starter_2)
     if pokemon_ganador == starter_1:
       lista2.remove(starter_2)
@@ -146,11 +148,6 @@ def main():
       else:
         print("El entrenador 1 se quedo sin Pokemons, el entrenador 2 GANA!")
         break
-
-
- 
-  
-
 
 
   print("------------------------------------------------------------------")
