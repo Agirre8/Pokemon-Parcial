@@ -90,9 +90,7 @@ def combate(pokemon1, pokemon2):
   return pokemon_ganador
   
 
-
 def main():
-
 
   print("Welcome to the Game.")
   print("Let's start to set the configuration of each game user. \n")
@@ -116,22 +114,24 @@ def main():
 
   starter_2 = choose_pokemons(lista2)
   
-  print(f"\nUser1 opens with {starter_1.get_pokemon_name()}\n")
-  print(f"User2 opens with {starter_2.get_pokemon_name()}\n")
+  print(f"\nUser1 opens with {starter_1.get_pokemon_name()}")
+  print(f"\nUser2 opens with {starter_2.get_pokemon_name()}")
 
 #Se escoge aleatoriamente que entrenador va ha empezar a luchar
 
-
   first_turn_pokemon = choose_first_turn(starter_1, starter_2)
-  print(f"{first_turn_pokemon.get_pokemon_name()} is attacking first\n")
+  print(f"\n{first_turn_pokemon.get_pokemon_name()} is attacking first")
 
 
   # Main loop.
 
+  vida_pokemons_1 = []
+  vida_pokemons_2 = []
   while True:
 
     pokemon_ganador = combate(starter_1, starter_2)
     if pokemon_ganador == starter_1:
+      vida_pokemons_1.append(starter_1.get_health_points())
       lista2.remove(starter_2)
       print(f"El pokemon pertenece a la lista 1")
       if len(lista2)!=0:
@@ -141,6 +141,7 @@ def main():
         break
 
     else:
+      vida_pokemons_2.append(starter_2.get_health_points())
       lista1.remove(starter_1)
       print(f"El pokemon pertenece a la lista 2")
       if len(lista1)!=0:
@@ -160,12 +161,19 @@ def main():
   print("------------------------------------------------------------------")
   print("Game User 1:")
 
+  if len(vida_pokemons_1) == 0:
+    print("No ha sovrevivido ningun pokemon del User1")
+  else:
+    print(f"Los pokemons del User1 que han sobrevivido lo han hecho con estos puntos de vida: {vida_pokemons_1}")
 
-  print("Game User 2:")
+  print("\nGame User 2:")
+  if len(vida_pokemons_1) == 0:
+    print("No ha sovrevivido ningun pokemon del User2")
+  else:
+    print(f"Los pokemons del User2 que han sobrevivido lo han hecho con estos puntos de vida: {vida_pokemons_2}\n")
 
 
 
-# Checking whether this module is executed just itself alone.
 if __name__ == "__main__":
     main()
 
