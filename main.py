@@ -8,13 +8,14 @@ from pokemon_water import PokemonWater
 import random
 import csv
 
+list_of_pokemons = []
 
 def obtener_csv_como_lista_de_diccionarios(nombre_archivo):
 
   separador = ","
   with open(nombre_archivo, encoding="utf-8") as archivo:
 
-    list_of_pokemons = []
+    
 
     for linea in archivo:
       linea = linea.rstrip("\n")  # Quitar salto de línea
@@ -28,8 +29,8 @@ def obtener_csv_como_lista_de_diccionarios(nombre_archivo):
 
       #creamos los objetos pokemon con los elementos del csv
       pokemon = Pokemon(id, name, weapon_type, health, attack, defense)
-      print(str(pokemon))
       list_of_pokemons.append(pokemon)
+      print(str(pokemon))
 
   return list_of_pokemons
 
@@ -51,6 +52,17 @@ def coach_is_undefeated(list_of_pokemons):
       return False
     else:
       return True
+  
+def choose_first_pokemons(list_of_pokemons):
+  
+  starter_pick = random.choice(list_of_pokemons)
+  print(starter_pick)
+  return starter_pick
+
+def choose_first_turn(pokemon1, pokemon2):
+  lista = [pokemon1, pokemon2]
+  starter_pokemon = random.choice(lista)
+  print(starter_pokemon)
 
 
 
@@ -62,15 +74,24 @@ def main():
 
   # Get configuration for Game User 1.
   lista1 = obtener_csv_como_lista_de_diccionarios("coach_1_pokemons.csv")
-
+  print("User1 esta preparado para la batalla")
   # Get configuration for Game User 2.
+  print("------------------------------------------------------------------")
   lista2 = obtener_csv_como_lista_de_diccionarios("coach_2_pokemons.csv")
+  print("User2 esta preparado para la batalla")
+
 
   print("------------------------------------------------------------------")
   print("The Game starts...")
   print("------------------------------------------------------------------")
 
   # Get a copy of the list of pokemons:
+  starter_1 = choose_first_pokemons(lista1)
+
+  starter_2 = choose_first_pokemons(lista2)
+  
+  print(f"User1 opens with {starter_1.get_pokemon_name()}")
+  print(f"User2 opens with {starter_2.get_pokemon_name()}")
 
 
   # Choose first pokemons

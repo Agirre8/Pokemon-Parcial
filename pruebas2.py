@@ -24,11 +24,12 @@ def obtener_csv_como_lista_de_diccionarios(nombre_archivo):
         print(str(pokemon1))
     return list_of_pokemons
 
-def get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
-    for pokemon in list_of_pokemons:
-        if pokemon.get_health_points() <= 0:
-            list_of_pokemons.pop(pokemon)
+def choose_first_pokemons(list_of_pokemons):
+  
+  starter_pick = random.choice(list_of_pokemons)
+  print(starter_pick)
+  return starter_pick
     
 
 obtener_csv_como_lista_de_diccionarios("coach_1_pokemons.csv")
-get_pokemon_in_a_list_of_pokemons(1, list_of_pokemons)
+choose_first_pokemons(list_of_pokemons)
