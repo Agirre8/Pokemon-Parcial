@@ -1,4 +1,4 @@
-from pokemon import Pokemon
+from Archivos.pokemon import Pokemon
 from weapon_type import *
 import random 
 
