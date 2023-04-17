@@ -131,6 +131,7 @@ def main():
 
   conbate(starter_1, starter_2, 1)
 
+  conbate(pokemon_ganador )
   
 
   print("------------------------------------------------------------------")
