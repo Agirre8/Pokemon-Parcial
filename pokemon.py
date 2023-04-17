@@ -14,10 +14,11 @@ class Pokemon():
         else:
             self.name = name
         #La función isinstance() comprueba si el objeto (primer argumento) es una instancia o subclase de la clase classinfo (segundo argumento).
-        if health < 1 or health > 100:
-            raise ValueError("Health tiene que ser un número entre 1 y 100.")
-        else:
-            self.health = health
+#        if health < 1 or health > 100:
+#            raise ValueError("Health tiene que ser un número entre 1 y 100.")
+#        else:
+#            self.health = health
+        self.health = health
         if attack < 1 or attack > 10:
             raise ValueError("La fuerza del ataque tiene que estar entre 1 y 10.")
         else:
